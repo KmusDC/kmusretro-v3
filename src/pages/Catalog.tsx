@@ -18,7 +18,7 @@ export default function Catalog() {
       <div className="mb-10">
         <h1 className="font-display text-4xl text-white">Catálogo</h1>
         <p className="mt-2 text-zinc-400">
-          {filtered.length} juegos disponibles
+          {filtered.length} productos disponibles
         </p>
       </div>
 
