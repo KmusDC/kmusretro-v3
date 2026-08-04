@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function Contact() {
-  const [sent, setSent] = useState(false)
+  const [sent, setSent] = useState(false) //useState
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
