@@ -43,10 +43,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/videos"
+            to="/catalogo"
             className="hidden rounded-full bg-gradient-to-r from-neon to-accent px-5 py-2 text-sm font-bold text-black transition-transform hover:scale-105 sm:inline-flex"
           >
-            Ver vídeos
+            Ver catálogo
           </Link>
           <Link
             to="/carrito"
