@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../store/cart'
 import { useCartTotal } from '../store/cartSelectors'
+import { orderCartItems } from '../utils/whatsapp'
 
 export default function Cart() {
   const { items, updateQuantity, removeItem, clear } = useCart()
@@ -71,11 +72,11 @@ export default function Cart() {
                 <div className="mt-1 flex items-center gap-2">
                   {game.oldPrice && (
                     <span className="text-xs text-zinc-500 line-through">
-                      {game.oldPrice.toFixed(2)}€
+                      {game.oldPrice.toFixed(2)}$
                     </span>
                   )}
                   <span className="font-display text-neon">
-                    {game.price.toFixed(2)}€
+                    {game.price.toFixed(2)}$
                   </span>
                 </div>
               </div>
@@ -127,15 +128,16 @@ export default function Cart() {
             <div className="flex justify-between border-t border-white/10 pt-3">
               <dt className="font-bold text-white">Total</dt>
               <dd className="font-display text-2xl text-neon">
-                {total.toFixed(2)}€
+                {total.toFixed(2)}$
               </dd>
             </div>
           </dl>
           <button
             type="button"
-            className="mt-6 w-full rounded-full bg-gradient-to-r from-neon to-accent py-3 font-bold text-black transition-transform hover:scale-105"
+            onClick={() => orderCartItems(items)}
+            className="mt-6 w-full rounded-full bg-gradient-to-r from-[#25D366] to-emerald-600 py-3 font-bold text-white transition-transform hover:scale-105"
           >
-            Finalizar compra
+            Ordenar vía WhatsApp
           </button>
           <Link
             to="/catalogo"

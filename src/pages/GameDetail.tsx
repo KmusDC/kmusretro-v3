@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { games } from '../data/games'
 import { useCart } from '../store/cart'
 import { platformIcons, stars } from '../components/gameUtils'
+import { orderSingleProduct } from '../utils/whatsapp'
 
 export default function GameDetail() {
   const { id } = useParams()
@@ -64,11 +65,11 @@ export default function GameDetail() {
             <div>
               {game.oldPrice && (
                 <p className="text-lg text-zinc-500 line-through">
-                  {game.oldPrice.toFixed(2)}€
+                  {game.oldPrice.toFixed(2)}$
                 </p>
               )}
               <p className="font-display text-4xl text-neon">
-                {game.price.toFixed(2)}€
+                {game.price.toFixed(2)}$
               </p>
             </div>
             <button
@@ -80,9 +81,10 @@ export default function GameDetail() {
             </button>
             <button
               type="button"
-              className="rounded-full border border-white/20 px-8 py-3 text-base font-bold text-white transition-colors hover:border-neon hover:text-neon"
+              onClick={() => orderSingleProduct(game)}
+              className="rounded-full bg-gradient-to-r from-[#25D366] to-emerald-600 px-8 py-3 text-base font-bold text-white transition-transform hover:scale-105"
             >
-              Comprar ahora
+              Ordenar vía WhatsApp
             </button>
           </div>
 
@@ -104,11 +106,16 @@ export default function GameDetail() {
               <Link
                 key={g.id}
                 to={`/juego/${g.id}`}
-                className={`flex aspect-video items-center justify-center rounded-2xl bg-gradient-to-br ${g.gradient} transition-transform hover:scale-[1.02]`}
+                className={`relative flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${g.gradient} transition-transform hover:scale-[1.02]`}
               >
-                <span className="px-4 text-center font-display text-xl text-white drop-shadow-lg">
-                  {g.title}
-                </span>
+                {g.cover && (
+                  <img
+                    src={g.cover}
+                    alt={g.title}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
+                <div className="pointer-events-none absolute inset-0 bg-black/30" />
               </Link>
             ))}
           </div>
