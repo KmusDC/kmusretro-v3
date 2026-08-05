@@ -28,7 +28,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((game) => (
-            <GameCard key={game.id} game={game} />
+            <GameCard key={game.id} game={game} />  //id del producto para que no se repita el mismo producto en la lista de destacados
           ))}
         </div>
       </section>
